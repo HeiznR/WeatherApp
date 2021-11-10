@@ -1,8 +1,12 @@
 import React from "react";
+import MainPage from "./screens/MainPage";
 
 function App() {
-  return <>
-  </>;
+  return (
+    <>
+      <MainPage />
+    </>
+  );
 }
 
 export default App;
