@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
+
+.todayForecast {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-areas:
+    "city city "
+    "img img "
+    "temp temp"
+    "description description "
+    "wind wind";
+  box-sizing: border-box;
+  width: 200px;
+  height: 250px;
+  padding: 10px 15px;
+  margin: 0 auto;
+  border-radius: 10px;
+  background-color: #0f0d3a;
+  color: white;
+  font-family: "Roboto";
+}
+.todayForecast__name {
+  grid-area: city;
+}
+
+.todayForecast__image {
+  grid-area: img;
+  width: 60px;
+  height: 60px;
+}
+.todayForecast__temp {
+  grid-area: temp;
+  font-size: 32px;
+}
+.todayForecast__description {
+  grid-area: description;
+}
+.todayForecast__wind {
+  grid-area: wind;
+  display: flex;
+  justify-content: space-between;
+}
