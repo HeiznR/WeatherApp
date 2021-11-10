@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './Bar.scss'
 
 const SearchBar = () => {
   const [city, setCity] = useState<string>("");
