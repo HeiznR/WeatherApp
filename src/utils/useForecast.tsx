@@ -4,23 +4,21 @@ import axios from "axios";
 
 const useForecast = () => {
   const defaultValuesForData: IForecast = {
-    city: { name: "Gdansk", country: "PL" },
+    city: { name: "", country: "" },
     list: [
       {
-        main: { temp: 10, temp_max: 12, temp_min: 8 },
-        weather: [{ description: "test", icon: "test icon" }],
-        wind: { speed: 2.3 },
+        main: { temp: 0, temp_max: 0, temp_min: 0 },
+        weather: [{ description: "", icon: "" }],
+        wind: { speed: 0 },
       },
     ],
   };
 
   const [data, setData] = useState<IForecast>(defaultValuesForData);
 
-  const fetchData = async (city: string) => {
+  const fetchData = async (url: string) => {
     try {
-      const response = await axios.get<IForecast>(
-        `https://the-ultimate-api-challenge.herokuapp.com/api.openweathermap.org/data/2.5/forecast?q=${city}&appid=b66b3fe27f7bea0990712afd47f3ae83`
-      );
+      const response = await axios.get<IForecast>(url);
       const data: IForecast = await response.data;
       setData(data);
       console.log(data);
