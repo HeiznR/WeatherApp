@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { IForecast } from "../../types/types";
+import { IForecast } from "../../types/typeResponse";
 import TodayBar from "./Today/Bar";
 interface IData {
   data: IForecast;

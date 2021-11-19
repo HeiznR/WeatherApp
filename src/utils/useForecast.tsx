@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { IForecast } from "../types/types";
+import { IForecast } from "../types/typeResponse";
 import axios from "axios";
+import { iError } from "../types/typeError";
 
 const useForecast = () => {
   const defaultValuesForData: IForecast = {
@@ -15,20 +16,31 @@ const useForecast = () => {
   };
 
   const [data, setData] = useState<IForecast>(defaultValuesForData);
+  const [error, setError] = useState<iError>({
+    cod: 1,
+    message: "",
+    errorOccured: false,
+  });
 
   const fetchData = async (url: string) => {
     try {
       const response = await axios.get<IForecast>(url);
       const data: IForecast = await response.data;
       setData(data);
-      console.log(data);
+      console.log(response);
       return data;
-    } catch (error) {
-      alert(error);
+    } catch (er) {
+      let e = (er as any).response;
+      setError({
+        cod: e.data.cod,
+        message: e.data.message,
+        errorOccured: true,
+      });
+      return;
     }
   };
 
-  return { fetchData, data };
+  return { fetchData, data, error, setError };
 };
 
 export default useForecast;
