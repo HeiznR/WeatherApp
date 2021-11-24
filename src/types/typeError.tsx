@@ -1,5 +1,4 @@
-export interface iError {
-  cod: number;
+export interface IError {
   message: string;
   errorOccured: boolean;
 }

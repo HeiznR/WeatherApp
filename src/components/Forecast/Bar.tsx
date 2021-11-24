@@ -1,13 +1,11 @@
 import { FC } from "react";
 import { IForecast } from "../../types/typeResponse";
 import TodayBar from "./Today/Bar";
-interface IData {
-  data: IForecast;
-}
-const ForecastBar: FC<IData> = ({ data }) => {
+
+const ForecastBar: FC = () => {
   return (
     <div className="forecastBar">
-      <TodayBar data={data} />
+      <TodayBar />
     </div>
   );
 };

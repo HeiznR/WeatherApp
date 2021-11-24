@@ -1,12 +1,10 @@
 import { FC } from "react";
 import { IForecast } from "../../../types/typeResponse";
+import { useTypedSelector } from "../../../utils/useTypedSelector";
 import "./Bar.scss";
 
-interface IData {
-  data: IForecast;
-}
-
-const TodayBar: FC<IData> = ({ data }) => {
+const TodayBar: FC = () => {
+  const data: IForecast = useTypedSelector((state) => state.fetch.data);
   const { name, country } = data.city;
   const { icon, description } = data.list[0].weather[0];
   return (
