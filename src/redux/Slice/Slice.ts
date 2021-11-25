@@ -28,15 +28,19 @@ const dataWeatherSlice = createSlice({
   name: "weatherReducer",
   initialState,
   reducers: {
-        fetchDataSucces(state, action: PayloadAction<IForecast>) {
+    fetchDataSucces(state, action: PayloadAction<IForecast>) {
       state.data = action.payload;
     },
-    fetchDataError(state, action: PayloadAction<IError>) {
-      state.error = action.payload;
+    openPopUpWithDataError(state, action: PayloadAction<string>) {
+      state.error.message = action.payload;
+      state.error.errorOccured = true;
+    },
+    closePopUp(state) {
+      state.error.errorOccured = false;
     },
   },
- 
 });
 
 export default dataWeatherSlice.reducer;
-export const { fetchDataSucces, fetchDataError } = dataWeatherSlice.actions;
+export const { fetchDataSucces, openPopUpWithDataError, closePopUp } =
+  dataWeatherSlice.actions;

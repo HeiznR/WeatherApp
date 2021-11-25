@@ -1,8 +1,8 @@
 import { FC, useState } from "react";
 import "./Bar.scss";
-import fetchUsers from "../../redux/ActionCreators/FetchData";
+import fetchData from "../../redux/ActionCreators/FetchData";
 import { useDispatch } from "react-redux";
-import { fetchDataError } from "../../redux/Slice/Slice";
+import { openPopUpWithDataError } from "../../redux/Slice/Slice";
 
 const SearchBar: FC = () => {
   const [city, setCity] = useState<string>("");
@@ -18,14 +18,8 @@ const SearchBar: FC = () => {
         className="search__button"
         onClick={() => {
           city
-            ? dispatch(fetchUsers(url))
-            : dispatch({
-                type: fetchDataError,
-                payload: {
-                  message: "input field cannot be empty",
-                  errorOccured: true,
-                },
-              });
+            ? dispatch(fetchData(url))
+            : dispatch(openPopUpWithDataError("Input field cannot be empty"));
         }}
       >
         Search

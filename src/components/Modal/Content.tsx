@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { useDispatch } from "react-redux";
-import { fetchDataError } from "../../redux/Slice/Slice";
+import { closePopUp } from "../../redux/Slice/Slice";
 import { useTypedSelector } from "../../utils/useTypedSelector";
 import "./Content.scss";
 
@@ -13,13 +13,7 @@ const ModalContent: FC = () => {
       <button
         className="content__button"
         onClick={() => {
-          dispatch({
-            type: fetchDataError,
-            payload: {
-              message: "",
-              errorOccured: false,
-            },
-          });
+          dispatch(closePopUp());
         }}
       >
         OK
