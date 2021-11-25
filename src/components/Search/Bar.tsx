@@ -1,8 +1,8 @@
 import { FC, useState } from "react";
 import "./Bar.scss";
-import fetchUsers from "../../redux/actionCreators/actionCreator";
+import fetchUsers from "../../redux/ActionCreators/FetchData";
 import { useDispatch } from "react-redux";
-import { testActionsTypes } from "../../redux/actions/actions";
+import { fetchDataError } from "../../redux/Slice/Slice";
 
 const SearchBar: FC = () => {
   const [city, setCity] = useState<string>("");
@@ -20,7 +20,7 @@ const SearchBar: FC = () => {
           city
             ? dispatch(fetchUsers(url))
             : dispatch({
-                type: testActionsTypes.fetchDataError,
+                type: fetchDataError,
                 payload: {
                   message: "input field cannot be empty",
                   errorOccured: true,

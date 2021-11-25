@@ -1,5 +1,4 @@
 import { FC } from "react";
-import { IForecast } from "../../types/typeResponse";
 import TodayBar from "./Today/Bar";
 
 const ForecastBar: FC = () => {

@@ -1,12 +1,12 @@
 import { FC } from "react";
 import { useDispatch } from "react-redux";
-import { testActionsTypes } from "../../redux/actions/actions";
+import { fetchDataError } from "../../redux/Slice/Slice";
 import { useTypedSelector } from "../../utils/useTypedSelector";
 import "./Content.scss";
 
 const ModalContent: FC = () => {
   const dispatch = useDispatch();
-  const error = useTypedSelector((state) => state.fetch.error);
+  const error = useTypedSelector((state) => state.weather.error);
   return (
     <div className="content">
       <div className="content__message">{error.message}</div>
@@ -14,8 +14,9 @@ const ModalContent: FC = () => {
         className="content__button"
         onClick={() => {
           dispatch({
-            type: testActionsTypes.fetchDataError,
+            type: fetchDataError,
             payload: {
+              message: "",
               errorOccured: false,
             },
           });

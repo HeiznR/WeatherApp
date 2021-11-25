@@ -4,7 +4,7 @@ import { useTypedSelector } from "../../../utils/useTypedSelector";
 import "./Bar.scss";
 
 const TodayBar: FC = () => {
-  const data: IForecast = useTypedSelector((state) => state.fetch.data);
+  const data: IForecast = useTypedSelector((state) => state.weather.data);
   const { name, country } = data.city;
   const { icon, description } = data.list[0].weather[0];
   return (
@@ -14,7 +14,7 @@ const TodayBar: FC = () => {
       </div>
       <img
         className="todayForecast__image"
-        src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
+        src={icon && `http://openweathermap.org/img/wn/${icon}@2x.png`}
         alt="weather-icon"
       />
       <div className="todayForecast__temp">

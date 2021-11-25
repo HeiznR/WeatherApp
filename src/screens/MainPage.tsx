@@ -3,14 +3,14 @@ import ForecastBar from "../components/Forecast/Bar";
 import SearchBar from "../components/Search/Bar";
 import ModalWrapper from "../components/Modal/Wrapper";
 import ModalContent from "../components/Modal/Content";
-import fetchUsers from "../redux/actionCreators/actionCreator";
+import fetchUsers from "../redux/ActionCreators/FetchData";
 import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../utils/useTypedSelector";
-import { testActionsTypes } from "../redux/actions/actions";
+import { fetchDataError } from "../redux/Slice/Slice";
 
 const MainPage = () => {
   let dispatch = useDispatch();
-  const error = useTypedSelector((state) => state.fetch.error);
+  const error = useTypedSelector((state) => state.weather.error);
 
   useEffect(() => {
     const succesCallback = (position: any) => {
@@ -19,7 +19,7 @@ const MainPage = () => {
     };
     const errorCallback = () => {
       dispatch({
-        type: testActionsTypes.fetchDataError,
+        type: fetchDataError,
         payload: {
           message: "User denied geolocation",
           errorOccured: true,
